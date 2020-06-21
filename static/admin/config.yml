@@ -1,0 +1,63 @@
+backend:
+  name: github
+  # change repo to your git repository url
+  repo: aranscope/netlify-gatsby-codepen-starter
+
+media_folder: static/assets
+public_folder: /assets
+
+collections:
+  - name: pages
+    label: Pages
+    label_singular: page
+    folder: _data/pages
+    slug: '{{slug}}'
+    create: true
+    fields:
+      - name: Title
+        label: Title
+        hint: The name that appears in the tab
+        required: false
+      - name: path
+        label: Path
+        widget: string
+        pattern: [/]
+        hint: "Path must start with /"
+      - name: head
+        label: Stuff for head
+        widget: object
+        fields:
+          - name: scripts
+            label: Scripts
+            hint: Links to Javascript files to include in the head
+            widget: list
+            field:
+              - name: link
+                label: Link
+                widget: string
+          - name: stylesheets
+            label: Stylesheets
+            hint: Links to CSS files to include in the head
+            widget: list
+            field:
+              - name: link
+                label: Link
+                widget: string
+          - name: code
+            label: Code
+            hint: Code to be injected into the <head> tag of this page
+            widget: code
+            required: false
+      - name: html
+        widget: code
+        label: Html
+        hint: Code to be injected into the <body> tag of this page
+        required: false
+      - name: css
+        label: Css
+        widget: code
+        required: false
+      - name: javascript
+        label: Javascript
+        widget: code
+        required: false
